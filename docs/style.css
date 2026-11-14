@@ -1,0 +1,157 @@
+:root {
+  --night: #0d1b3d;
+  --night-2: #1b2f63;
+  --red: #c8202f;
+  --red-dark: #9e1622;
+  --gold: #e8b84a;
+  --gold-soft: #f7e2a6;
+  --paper: #fffaf0;
+  --ink: #2a1d14;
+  --muted: #6b5a4c;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; min-height: 100%; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(ellipse at top, var(--night-2), var(--night) 70%) fixed, var(--night);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 28px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.top { text-align: center; color: var(--gold-soft); }
+.mitra { width: 72px; height: 80px; filter: drop-shadow(0 6px 14px rgba(0,0,0,.35)); }
+.kicker {
+  margin: 6px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.6rem;
+  letter-spacing: .02em;
+  color: var(--gold);
+}
+
+.card, .info {
+  background: var(--paper);
+  border-radius: 18px;
+  box-shadow: 0 12px 34px rgba(0,0,0,.35);
+  border: 2px solid var(--gold);
+}
+
+.card { padding: 32px 22px; text-align: center; min-height: 230px; display: grid; place-items: center; }
+.state { width: 100%; }
+.state[hidden] { display: none; }
+
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.7rem, 7vw, 2.2rem);
+  margin: 0 0 10px;
+  color: var(--red-dark);
+  overflow-wrap: anywhere;
+}
+
+.muted { color: var(--muted); line-height: 1.5; margin: 0 0 8px; }
+.small { font-size: .95rem; }
+.big-emoji { font-size: 2.6rem; margin: 0 0 4px; }
+
+button {
+  margin-top: 18px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: .03em;
+  color: #fff;
+  background: linear-gradient(180deg, var(--red), var(--red-dark));
+  border: 2px solid var(--gold);
+  border-radius: 999px;
+  padding: 14px 44px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(158,22,34,.35);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+button:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(158,22,34,.45); }
+button:active { transform: translateY(1px); }
+button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+button:disabled { opacity: .7; cursor: default; }
+
+.recipient {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 11vw, 3rem);
+  font-weight: 700;
+  color: var(--red);
+  margin: 4px 0 14px;
+  overflow-wrap: anywhere;
+  animation: pop .55s cubic-bezier(.2,1.6,.4,1) both;
+}
+@keyframes pop { from { transform: scale(.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.info { padding: 18px 18px 20px; }
+.info[hidden] { display: none; }
+
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.facts > div {
+  background: #fff;
+  border: 1px solid #efdcae;
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-align: center;
+}
+.facts strong { display: block; font-size: 1.25rem; color: var(--ink); margin-top: 2px; }
+
+.label {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.cd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.cd-grid > div {
+  background: var(--night);
+  color: var(--gold-soft);
+  border-radius: 10px;
+  padding: 10px 4px 8px;
+  text-align: center;
+}
+.cd-grid strong { display: block; font-size: 1.5rem; font-variant-numeric: tabular-nums; color: #fff; }
+.cd-grid span { font-size: .75rem; letter-spacing: .05em; }
+
+.arrived { text-align: center; font-weight: 700; color: var(--red-dark); margin: 4px 0 0; }
+
+/* Falling snow — pure CSS, two layers */
+.snow, .snow::before, .snow::after {
+  position: fixed;
+  inset: -100vh 0 0 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 90px 120px, rgba(255,255,255,.8), transparent),
+    radial-gradient(3px 3px at 160px 60px, rgba(255,255,255,.9), transparent),
+    radial-gradient(2px 2px at 230px 170px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 300px 90px, rgba(255,255,255,.7), transparent);
+  background-size: 320px 220px;
+  animation: snow 18s linear infinite;
+  z-index: 0;
+}
+.snow::before, .snow::after { content: ""; inset: 0; }
+.snow::before { background-size: 250px 260px; animation-duration: 26s; opacity: .6; }
+.snow::after { background-size: 400px 300px; animation-duration: 34s; opacity: .4; }
+@keyframes snow { to { transform: translateY(100vh); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .snow, .snow::before, .snow::after, .recipient { animation: none; }
+}

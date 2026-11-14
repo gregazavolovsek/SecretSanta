@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0d1b3d">
+  <title>Skrivni Miklavž</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%81%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="snow" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <header class="top">
+      <svg class="mitra" viewBox="0 0 100 110" aria-hidden="true">
+        <path d="M18 100 V46 Q18 22 50 6 Q82 22 82 46 V100 Z" fill="#c8202f" stroke="#e8b84a" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M50 6 V100" stroke="#e8b84a" stroke-width="3" opacity=".55"/>
+        <rect x="18" y="86" width="64" height="14" fill="#e8b84a"/>
+        <path d="M50 34 V70 M38 48 H62" stroke="#f7e2a6" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      <p class="kicker">Skrivni Miklavž</p>
+    </header>
+
+    <section class="card" id="card" aria-live="polite">
+      <div class="state" id="loading">
+        <p class="muted">Nalagam …</p>
+      </div>
+
+      <div class="state" id="error" hidden>
+        <p class="big-emoji" aria-hidden="true">❄️</p>
+        <h1>Ups!</h1>
+        <p id="error-text"></p>
+      </div>
+
+      <div class="state" id="greet" hidden>
+        <h1>Živijo, <span id="name"></span>!</h1>
+        <p class="muted">Miklavž ti je pripravil skrivno nalogo. Klikni spodaj in poglej, koga obdaruješ.</p>
+        <button id="reveal" type="button">Razkrij</button>
+      </div>
+
+      <div class="state" id="result" hidden>
+        <p class="muted small">Darilo kupuješ za:</p>
+        <p class="recipient" id="recipient"></p>
+        <p class="muted small">Psst … naj ostane skrivnost. 🤫</p>
+      </div>
+    </section>
+
+    <section class="info" id="info" hidden>
+      <div class="facts">
+        <div><span class="label">Proračun</span><strong>30 €</strong></div>
+        <div><span class="label">Obdaritev</span><strong>5. 12. 2026</strong></div>
+      </div>
+      <div class="countdown" id="countdown">
+        <p class="label">Do obdaritve še:</p>
+        <div class="cd-grid">
+          <div><strong id="cd-d">–</strong><span>dni</span></div>
+          <div><strong id="cd-h">–</strong><span>ur</span></div>
+          <div><strong id="cd-m">–</strong><span>min</span></div>
+          <div><strong id="cd-s">–</strong><span>sek</span></div>
+        </div>
+      </div>
+      <p class="arrived" id="arrived" hidden>🎁 Miklavž je tu! Vesele praznike!</p>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
